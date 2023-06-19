@@ -1,18 +1,20 @@
 defmodule Powergen do
   @moduledoc """
-  Documentation for `Powergen`.
+  Documentation for `Powergen` Customer Data parser
   """
 
   @doc """
-  Hello world.
+  Functionality:
+  1. ingest *.csv
+  2. validate ingested data
 
   ## Examples
 
-      iex> Powergen.hello()
-      :world
+      iex> Powergen.parse("priv/test.csv")
+      %{}
 
   """
-  def hello do
-    :world
+  def parse(source_csv) do
+    %{}
   end
 end
