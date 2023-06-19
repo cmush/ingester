@@ -24,10 +24,15 @@ defmodule Powergen.CustomerTest do
       assert {:ok, %Customer{}} = @valid_customer |> Customer.new() |> Customer.validate()
     end
 
-    test "invalid site code " do
+    test "invalid site code" do
       assert {:error,
               [{:error, :SiteCode, :site_codes, "Site code 657 does not exist in Sierra Leone."}]} =
                @invalid_customer |> Customer.new() |> Customer.validate()
+    end
+
+    test "invalid dob" do
+      assert {:error, [{:error, :DoB, :iso_8601, "Date is not a valid ISO 8601 date string."}]} =
+               %{@valid_customer | "DoB" => "invalid"} |> Customer.new() |> Customer.validate()
     end
   end
 end

@@ -7,7 +7,7 @@ defmodule Powergen.Customer do
   alias Powergen.Validator.SiteCode
 
   validates(:Name, presence: true)
-  validates(:DoB, presence: true)
+  validates(:DoB, presence: true, iso_8601: true)
   validates(:Phone, presence: true)
   validates(:NationalID, presence: true)
   validates(:CountryID, presence: true)
