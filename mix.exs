@@ -21,7 +21,8 @@ defmodule Powergen.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:exconstructor, "~> 1.2"}
+      {:exconstructor, "~> 1.2"},
+      {:vex, "~> 0.9.0"}
     ]
   end
 end
