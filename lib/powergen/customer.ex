@@ -8,16 +8,16 @@ defmodule Powergen.Customer do
 
   validates(:Name, presence: true)
   validates(:DoB, presence: true, iso_8601: true)
-  validates(:Phone, presence: true)
+  validates(:Phone, presence: true, phone_number: true)
   validates(:NationalID, presence: true)
   validates(:CountryID, presence: true)
   validates(:SiteCode, presence: true)
 
   def validate(customer) do
-    case Vex.validate(customer) do
-      {:ok, customer} ->
-        SiteCode.validate(customer)
-
+    with {:ok, customer} <- SiteCode.validate(customer),
+         {:ok, customer} <- Vex.validate(customer) do
+      {:ok, customer}
+    else
       errors ->
         errors
     end

@@ -34,5 +34,16 @@ defmodule Powergen.CustomerTest do
       assert {:error, [{:error, :DoB, :iso_8601, "Date is not a valid ISO 8601 date string."}]} =
                %{@valid_customer | "DoB" => "invalid"} |> Customer.new() |> Customer.validate()
     end
+
+    test "invalid phone" do
+      assert {:error, [{:error, :Phone, :phone_number, "Phone Number invalid format incorrect"}]} =
+               %{@valid_customer | "Phone" => "invalid"} |> Customer.new() |> Customer.validate()
+
+      assert {:error,
+              [{:error, :Phone, :phone_number, "Phone Number 25470561123 format incorrect"}]} =
+               %{@valid_customer | "Phone" => "25470561123"}
+               |> Customer.new()
+               |> Customer.validate()
+    end
   end
 end
