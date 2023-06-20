@@ -42,19 +42,6 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/ingester>.
 
-## Tests
-
-Run all tests as follows:
-`MIX_ENV=test mix do deps.get, test`
-
-Customer validation is tested under [`test/ingester/customer_test.exs`](https://github.com/cmush/ingester/blob/master/test/ingester/customer_test.exs) while api boundary tests are at [`test/ingester_test.exs`](https://github.com/cmush/ingester/blob/master/test/ingester_test.exs).
-You may run them individually as follows: 
-```
-$ mix deps.get
-$ mix test test/ingester/customer_test.exs
-$ mix test test/ingester_test.exs
-```
-
 ## Test Drive on **iex**
 
 _PS: a test csv file is provided at [`priv/test.csv`](https://github.com/cmush/ingester/blob/master/priv/test.csv). You may use it as a template for creating your own customer data csv files_ 
@@ -81,5 +68,17 @@ _which this library will parse and validate for you._
 ]
 ```
 
+## Tests
+
+Run all tests as follows:
+`MIX_ENV=test mix do deps.get, test`
+
+Customer validation is tested under [`test/ingester/customer_test.exs`](https://github.com/cmush/ingester/blob/master/test/ingester/customer_test.exs) while api boundary tests are at [`test/ingester_test.exs`](https://github.com/cmush/ingester/blob/master/test/ingester_test.exs).
+You may run them individually as follows: 
+```
+$ mix deps.get
+$ mix test test/ingester/customer_test.exs
+$ mix test test/ingester_test.exs
+```
 ## Parting shot
 Finally, you may use this functionality in your elixir app by adding it to your app's list of dependencies as discussed in the [Installation section](#installation). You will then call `Ingester.csv/1` with your own custom file system path (pointing to a valid customer data csv file whose format matches the sample provided).
