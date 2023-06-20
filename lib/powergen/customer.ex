@@ -4,7 +4,7 @@ defmodule Powergen.Customer do
   use ExConstructor
   use Vex.Struct
 
-  alias Powergen.Validator.SiteCode
+  alias Powergen.Validator.{SiteCode, PhoneNumber}
 
   validates(:Name, presence: true)
   validates(:DoB, presence: true, iso_8601: true)
@@ -17,9 +17,24 @@ defmodule Powergen.Customer do
     with {:ok, customer} <- SiteCode.validate(customer),
          {:ok, customer} <- Vex.validate(customer) do
       {:ok, customer}
-    else
-      errors ->
-        errors
     end
+  end
+
+  def render_map(%__MODULE__{
+        CountryID: country_id,
+        DoB: d_o_b,
+        Name: name,
+        NationalID: national_id,
+        Phone: phone,
+        SiteCode: site_code
+      }) do
+    %{
+      CountryID: String.to_integer(country_id),
+      DoB: d_o_b,
+      Name: name,
+      NationalID: national_id,
+      Phone: "#{PhoneNumber.clean(phone)}",
+      SiteCode: String.to_integer(site_code)
+    }
   end
 end
