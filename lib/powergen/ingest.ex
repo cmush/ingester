@@ -18,7 +18,7 @@ defmodule Powergen.Ingest do
            |> Enum.with_index()
            |> Map.new(fn {val, num} -> {columns[num], val} end)
            |> Customer.new()
-           |> Vex.validate() do
+           |> Customer.validate() do
         {:ok,
          %Customer{
            CountryID: country_id,
