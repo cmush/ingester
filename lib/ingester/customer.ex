@@ -9,7 +9,7 @@ defmodule Ingester.Customer do
   validates(:Name, presence: true)
   validates(:DoB, presence: true, iso_8601: true)
   validates(:Phone, presence: true, phone_number: true)
-  validates(:NationalID, presence: true)
+  validates(:NationalID)
   validates(:CountryID, presence: true)
   validates(:SiteCode, presence: true)
 
