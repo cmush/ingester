@@ -1,7 +1,7 @@
 defmodule Ingester do
   @moduledoc """
   Documentation for `Ingester`
-  - CSV Data parser Powergen customer data
+  - CSV Data parser for Powergen customer data
   """
 
   alias NimbleCSV.RFC4180, as: CSV
@@ -15,7 +15,7 @@ defmodule Ingester do
   ## Examples
 
       iex> Ingester.csv("priv/test.csv")
-      %{}
+      [%{SiteCode: 235, DoB: "1963-08-15", Phone: "254705611231", Name: "Simon Kamau", NationalID: "13424422", CountryID: 1}, %{error: "Site code 657 does not exist in Sierra Leone.", line: 2}]
 
   """
   def csv(path) do

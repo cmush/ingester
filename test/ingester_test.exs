@@ -1,6 +1,6 @@
 defmodule IngesterTest do
   use ExUnit.Case
-  # doctest Ingester
+  doctest Ingester
 
   test "ingest and validate the data from the csv file" do
     assert Ingester.csv("priv/test.csv") ==
