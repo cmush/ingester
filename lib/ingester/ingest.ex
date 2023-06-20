@@ -1,5 +1,5 @@
-defmodule Powergen.Ingest do
-  alias Powergen.Customer
+defmodule Ingester.Ingest do
+  alias Ingester.Customer
 
   defp get_columns(file_stream) do
     file_stream

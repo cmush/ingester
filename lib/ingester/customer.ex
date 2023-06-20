@@ -1,10 +1,10 @@
-defmodule Powergen.Customer do
+defmodule Ingester.Customer do
   defstruct [:Name, :DoB, :Phone, :NationalID, :CountryID, :SiteCode]
 
   use ExConstructor
   use Vex.Struct
 
-  alias Powergen.Validator.{SiteCode, PhoneNumber}
+  alias Ingester.Validator.{SiteCode, PhoneNumber}
 
   validates(:Name, presence: true)
   validates(:DoB, presence: true, iso_8601: true)

@@ -1,4 +1,4 @@
-defmodule Powergen.Validator.PhoneNumber do
+defmodule Ingester.Validator.PhoneNumber do
   use Vex.Validator
 
   def validate(value, _options) do

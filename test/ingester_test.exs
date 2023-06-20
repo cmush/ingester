@@ -1,9 +1,9 @@
-defmodule PowergenTest do
+defmodule IngesterTest do
   use ExUnit.Case
-  # doctest Powergen
+  # doctest Ingester
 
   test "ingest and validate the data from the csv file" do
-    assert Powergen.parse("priv/test.csv") ==
+    assert Ingester.csv("priv/test.csv") ==
              [
                %{
                  Name: "Simon Kamau",

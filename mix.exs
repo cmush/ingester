@@ -1,9 +1,9 @@
-defmodule Powergen.MixProject do
+defmodule Ingester.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :powergen,
+      app: :ingester,
       version: "0.1.0",
       elixir: "~> 1.15-rc",
       start_permanent: Mix.env() == :prod,

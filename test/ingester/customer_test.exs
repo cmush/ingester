@@ -1,6 +1,6 @@
-defmodule Powergen.CustomerTest do
+defmodule Ingester.CustomerTest do
   use ExUnit.Case
-  alias Powergen.Customer
+  alias Ingester.Customer
 
   describe "validate customer attributes" do
     @valid_customer %{

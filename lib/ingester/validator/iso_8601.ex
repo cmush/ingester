@@ -1,4 +1,4 @@
-defmodule Powergen.Validator.Iso8601 do
+defmodule Ingester.Validator.Iso8601 do
   use Vex.Validator
 
   def validate(value, _options) do

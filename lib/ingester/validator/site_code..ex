@@ -1,5 +1,5 @@
-defmodule Powergen.Validator.SiteCode do
-  alias Powergen.Customer
+defmodule Ingester.Validator.SiteCode do
+  alias Ingester.Customer
 
   def validate(
         %Customer{

@@ -1,4 +1,4 @@
-# Powergen
+# Ingester
 
 **TODO: Add description**
 
@@ -10,7 +10,7 @@ by adding `powergen` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:powergen, "~> 0.1.0"}
+    {:ingester, "~> 0.1.0"}
   ]
 end
 ```

@@ -1,10 +1,11 @@
-defmodule Powergen do
+defmodule Ingester do
   @moduledoc """
-  Documentation for `Powergen` Customer Data parser
+  Documentation for `Ingester`
+  - CSV Data parser Powergen customer data
   """
 
   alias NimbleCSV.RFC4180, as: CSV
-  alias Powergen.Ingest
+  alias Ingester.Ingest
 
   @doc """
   Functionality:
@@ -13,12 +14,12 @@ defmodule Powergen do
 
   ## Examples
 
-      iex> Powergen.parse("priv/test.csv")
+      iex> Ingester.csv("priv/test.csv")
       %{}
 
   """
-  def parse(source_csv) do
-    source_csv
+  def csv(path) do
+    path
     |> File.stream!()
     |> CSV.parse_stream(skip_headers: false)
     |> Ingest.map_rows()
