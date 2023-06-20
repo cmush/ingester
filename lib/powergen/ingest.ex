@@ -13,8 +13,10 @@ defmodule Powergen.Ingest do
 
     file_stream
     |> Stream.drop(1)
+    |> Stream.with_index(1)
     |> Enum.map(fn row ->
       case row
+           |> elem(0)
            |> Enum.with_index()
            |> Map.new(fn {val, num} -> {columns[num], val} end)
            |> Customer.new()
@@ -37,8 +39,8 @@ defmodule Powergen.Ingest do
             SiteCode: String.to_integer(site_code)
           }
 
-          {:error, [{:error, _, _, message}]} ->
-          %{error: message}
+        {:error, [{:error, _, _, message}]} ->
+          %{error: message, line: elem(row, 1)}
       end
     end)
   end

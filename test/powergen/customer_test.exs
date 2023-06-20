@@ -31,7 +31,8 @@ defmodule Powergen.CustomerTest do
     end
 
     test "invalid dob" do
-      assert {:error, [{:error, :DoB, :iso_8601, "Date invalid is not a valid ISO 8601 date string."}]} =
+      assert {:error,
+              [{:error, :DoB, :iso_8601, "Date invalid is not a valid ISO 8601 date string."}]} =
                %{@valid_customer | "DoB" => "invalid"} |> Customer.new() |> Customer.validate()
     end
 
