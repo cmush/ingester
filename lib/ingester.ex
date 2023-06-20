@@ -9,7 +9,7 @@ defmodule Ingester do
 
   @doc """
   Functionality:
-  1. ingest *.csv
+  1. ingest a *.csv with customer data
   2. validate ingested data
 
   ## Examples
@@ -18,7 +18,7 @@ defmodule Ingester do
       [%{SiteCode: 235, DoB: "1963-08-15", Phone: "254705611231", Name: "Simon Kamau", NationalID: "13424422", CountryID: 1}, %{error: "Site code 657 does not exist in Sierra Leone.", line: 2}]
 
   """
-  def csv(path) do
+  def csv(path) when is_binary(path) do
     path
     |> File.stream!()
     |> CSV.parse_stream(skip_headers: false)
