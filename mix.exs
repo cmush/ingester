@@ -22,7 +22,8 @@ defmodule Powergen.MixProject do
   defp deps do
     [
       {:exconstructor, "~> 1.2"},
-      {:vex, "~> 0.9.0"}
+      {:vex, "~> 0.9.0"},
+      {:nimble_csv, "~> 1.2.0"}
     ]
   end
 end

@@ -1,4 +1,5 @@
 %{
   "exconstructor": {:hex, :exconstructor, "1.2.8", "4b28805faf1cfd14ad0e04e379f819adf5c16cb2bb8cb0e98755dcf6a2721837", [:mix], [], "hexpm", "fc2dde6ff52f7184af03c91183724dc53d5e5ee8cb3b2a4170758e080c90fecb"},
+  "nimble_csv": {:hex, :nimble_csv, "1.2.0", "4e26385d260c61eba9d4412c71cea34421f296d5353f914afe3f2e71cce97722", [:mix], [], "hexpm", "d0628117fcc2148178b034044c55359b26966c6eaa8e2ce15777be3bbc91b12a"},
   "vex": {:hex, :vex, "0.9.0", "613ea5eb3055662e7178b83e25b2df0975f68c3d8bb67c1645f0573e1a78d606", [:mix], [], "hexpm", "c69fff44d5c8aa3f1faee71bba1dcab05dd36364c5a629df8bb11751240c857f"},
 }
