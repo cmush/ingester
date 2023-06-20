@@ -4,11 +4,25 @@ Ingester is a simplified elixir library whose purpose is to ingest customer data
 
 The customer data in the CSV file must be in the following format / have the following column names:  
 
-`Name,DoB,Phone,NationalID,CountryID,SiteCode`  
+`Name,DoB,Phone,NationalID,CountryID,SiteCode` 
+
+## Format rules
+
+The returned records must conform to the following:
+
+- Name: a non-empty string
+- Date of birth: An ISO 8601 date string
+- Telephone number: a string of the format `254759635432`
+- ID number: optional. a string.
+- Country ID: an integer, on of `1: Kenya, 2: Sierra Leone, 3: Nigeria`
+- With the following site codes:
+Kenya: 235, 657, 887
+Sierra Leone: 772, 855
+Nigeria: 465, 811, 980
 
 It returns an elixir data structure consisting of a list with valid customer data or error maps with the csv line number.
 
-For a more detailed example, see the `Ingester.csv/1` function's documentation.
+For a more detailed example, see the [`Ingester.csv/1` function's documentation](https://github.com/cmush/ingester/blob/8543654ed283771675111f4f7600b9aba082a1ef/lib/ingester.ex#L21).
 
 ## Installation
 
@@ -33,22 +47,23 @@ be found at <https://hexdocs.pm/ingester>.
 Run all tests as follows:
 `MIX_ENV=test mix do deps.get, test`
 
-Customer validation is tested under `test/ingester/customer_test.exs` while api boundary tests are at `test/ingester_test.exs`.
+Customer validation is tested under [`test/ingester/customer_test.exs`](https://github.com/cmush/ingester/blob/master/test/ingester/customer_test.exs) while api boundary tests are at [`test/ingester_test.exs`](https://github.com/cmush/ingester/blob/master/test/ingester_test.exs).
 You may run them individually as follows: 
 ```
+$ mix deps.get
 $ mix test test/ingester/customer_test.exs
 $ mix test test/ingester_test.exs
 ```
 
 ## Test Drive on **iex**
 
-_PS: a test csv file is provided at `priv/test.csv`. You may use it as a template for creating your own customer data csv files_ 
+_PS: a test csv file is provided at [`priv/test.csv`](https://github.com/cmush/ingester/blob/master/priv/test.csv). You may use it as a template for creating your own customer data csv files_ 
 _which this library will parse and validate for you._
 
 1. clone this repository to your local workspace.
 2. `cd` into `ingester`
-3. **assuming you have elixir installed**, run `mix deps.get` followed by `iex -S mix`. This should open up the elixir terminal where our library will already loaded.
-4. As per `Ingester.csv/1`'s documentation, paste the following into your iex terminal prompt: `Ingester.csv("priv/test.csv")`. It will render the following output:
+3. [**assuming you have elixir installed**](https://elixir-lang.org/install.html), run `mix deps.get` followed by `iex -S mix`. This should open up the elixir terminal where our library will already loaded.
+4. As per [`Ingester.csv/1`'s documentation]((https://github.com/cmush/ingester/blob/8543654ed283771675111f4f7600b9aba082a1ef/lib/ingester.ex#L21)), paste the following into your iex terminal prompt: `Ingester.csv("priv/test.csv")`. It will render the following output:
 ```
 [
   %{
@@ -67,4 +82,4 @@ _which this library will parse and validate for you._
 ```
 
 ## Parting shot
-Finally, you may use this functionality in your elixir app by adding its dependency to your app's list of dependencies as discussed in the Installation section. You will then call `Ingester.csv/1` with your own custom file system path (pointing to a valid customer data csv file whose format matches the sample provided).
+Finally, you may use this functionality in your elixir app by adding it to your app's list of dependencies as discussed in the [Installation section](#installation). You will then call `Ingester.csv/1` with your own custom file system path (pointing to a valid customer data csv file whose format matches the sample provided).
