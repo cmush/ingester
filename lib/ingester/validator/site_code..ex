@@ -15,6 +15,9 @@ defmodule Ingester.Validator.SiteCode do
 
       country_id == "3" ->
         country_site_codes("Nigeria", customer, [465, 811, 980])
+
+      true ->
+        {:error, [{:error, :CountryID, :country_id, "Country ID not provided."}]}
     end
   end
 
