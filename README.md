@@ -38,9 +38,20 @@ end
 ```
 Then running `mix deps.get`.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ingester>.
+## Configuration
+Paste the following configuration into your app's `config/config.exs`
+
+```elixir
+config :vex,
+  sources: [
+    [
+      iso_8601: Ingester.Validator.Iso8601,
+      phone_number: Ingester.Validator.PhoneNumber
+    ],
+    Vex.Validators
+  ]
+```
+This configures the customer data validation done using Vex.  
 
 ## Test Drive on **iex**
 
@@ -80,5 +91,5 @@ $ mix deps.get
 $ mix test test/ingester/customer_test.exs
 $ mix test test/ingester_test.exs
 ```
-## Parting shot
-Finally, you may use this functionality in your elixir app by adding it to your app's list of dependencies as discussed in the [Installation section](#installation). You will then call `Ingester.csv/1` with your own custom file system path (pointing to a valid customer data csv file whose format matches the sample provided).
+## Using it in your own app
+Finally, you may use this functionality in your elixir app by adding it to your app's list of dependencies as discussed in the [Installation section](#installation) and configuring it as shown in the [Configuration](#configuration). You will then call `Ingester.csv/1` with your own custom file system path (pointing to a valid customer data csv file whose format matches the sample provided).
