@@ -14,9 +14,10 @@ defmodule Powergen.Ingest do
     file_stream
     |> Stream.drop(1)
     |> Stream.with_index(1)
-    |> Enum.map(fn row ->
+    |> Enum.map(fn row_with_index ->
+      {row, idx} = row_with_index
+
       case row
-           |> elem(0)
            |> Enum.with_index()
            |> Map.new(fn {val, num} -> {columns[num], val} end)
            |> Customer.new()
@@ -25,7 +26,10 @@ defmodule Powergen.Ingest do
           Customer.render_map(customer)
 
         {:error, [{:error, _, _, message}]} ->
-          %{error: message, line: elem(row, 1)}
+          Customer.render_error(message, idx)
+
+        _ ->
+          Customer.render_error("unknown error", idx)
       end
     end)
   end

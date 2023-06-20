@@ -37,4 +37,6 @@ defmodule Powergen.Customer do
       SiteCode: String.to_integer(site_code)
     }
   end
+
+  def render_error(message, line), do: %{error: message, line: line}
 end
